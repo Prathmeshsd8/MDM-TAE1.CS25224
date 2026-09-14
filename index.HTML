@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Image Gallery with Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+</head>
+<body class="bg-black text-gray-100 min-h-screen py-8 px-4">
+    <!-- Navigation Bar -->
+    <nav class="bg-zinc-900 border-b border-zinc-800 text-gray-100 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Brand / Logo -->
+            <a href="#" class="text-xl font-bold tracking-wide text-white hover:text-blue-500 transition-colors">
+                DYNAMIC IMAGE GALLERY
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#" class="text-white hover:text-blue-400 transition-colors">Home</a>
+                <a href="#imageGrid" class="text-gray-400 hover:text-blue-400 transition-colors">Gallery</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">About</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition-colors">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuBtn" class="md:hidden text-gray-400 hover:text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-zinc-900 border-b border-zinc-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#" class="block text-white py-1">Home</a>
+            <a href="#imageGrid" class="block text-gray-400 hover:text-white py-1">Gallery</a>
+            <a href="#" class="block text-gray-400 hover:text-white py-1">About</a>
+            <a href="#" class="block text-gray-400 hover:text-white py-1">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="max-w-6xl mx-auto py-8 px-4">
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-6 text-white tracking-wide">Dynamic Portfolio</h1>
+
+        <!-- Filter Buttons -->
+        <div class="flex justify-center flex-wrap gap-3 mb-8">
+            <button class="filter-btn px-5 py-2 rounded-full font-semibold border border-zinc-700 bg-blue-600 text-white shadow-md transition-all duration-300 hover:scale-105" data-filter="all">All</button>
+            <button class="filter-btn px-5 py-2 rounded-full font-semibold border border-zinc-700 bg-zinc-900 text-gray-400 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm" data-filter="nature">Nature</button>
+            <button class="filter-btn px-5 py-2 rounded-full font-semibold border border-zinc-700 bg-zinc-900 text-gray-400 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm" data-filter="architecture">Architecture</button>
+            <button class="filter-btn px-5 py-2 rounded-full font-semibold border border-zinc-700 bg-zinc-900 text-gray-400 transition-all duration-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 shadow-sm" data-filter="technology">Technology</button>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="imageGrid">
+            <!-- Item 1 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80" alt="Misty Pine Forest" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Misty Pine Forest</h3>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="architecture">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80" alt="Modern Skyscraper" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Modern Skyscraper</h3>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="technology">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Circuit Board" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Circuit Board</h3>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="nature">
+                <img src="https://media.istockphoto.com/id/478627080/photo/evening-view-of-ama-dablam.jpg?s=612x612&w=0&k=20&c=GLKvtQt1JVoOB4yR2WI86_fYOmG8WObeZP_QV_gFG_0=" alt="Majestic Mountains" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Majestic Mountains</h3>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="architecture">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Minimalist Interior" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Minimalist Interior</h3>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="image-item group relative rounded-xl overflow-hidden shadow-lg bg-zinc-900 border border-zinc-800 aspect-[4/3] cursor-pointer" data-category="technology">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=800&q=80" alt="Code Matrix" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <h3 class="font-medium text-lg">Code Matrix</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="fixed inset-0 bg-black/95 flex justify-center items-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+        <!-- Close Button -->
+        <button id="closeBtn" class="absolute top-5 right-6 text-white text-4xl hover:text-gray-400 focus:outline-none z-50">&times;</button>
+        
+        <!-- Navigation Buttons -->
+        <button id="prevBtn" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 text-white text-2xl p-3 rounded-full transition-colors z-50">&#10094;</button>
+        <button id="nextBtn" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 text-white text-2xl p-3 rounded-full transition-colors z-50">&#10095;</button>
+        
+        <!-- Content Area -->
+        <div class="max-w-[90%] max-h-[85vh] text-center relative">
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[75vh] rounded-lg shadow-2xl object-contain mx-auto border border-zinc-800">
+            <div id="lightboxCaption" class="text-white text-lg mt-4 font-medium"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript Functionality -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Gallery & Lightbox Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const imageItems = document.querySelectorAll('.image-item');
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const closeBtn = document.getElementById('closeBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        let visibleItems = [];
+
+        // 1. Filtering Logic
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const activeBtn = document.querySelector('.filter-btn.bg-blue-600');
+                if(activeBtn) {
+                    activeBtn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                    activeBtn.classList.add('bg-zinc-900', 'text-gray-400', 'shadow-sm');
+                }
+                btn.classList.remove('bg-zinc-900', 'text-gray-400', 'shadow-sm');
+                btn.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                imageItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+                
+                updateVisibleItems();
+            });
+        });
+
+        // 2. Lightbox Logic
+        function updateVisibleItems() {
+            visibleItems = Array.from(imageItems).filter(item => !item.classList.contains('hidden'));
+        }
+
+        updateVisibleItems();
+
+        imageItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                updateVisibleItems();
+                currentIndex = visibleItems.indexOf(item);
+                openLightbox(currentIndex);
+            });
+        });
+
+        function openLightbox(index) {
+            const targetItem = visibleItems[index];
+            const img = targetItem.querySelector('img');
+            const title = targetItem.querySelector('h3').innerText;
+
+            lightboxImg.src = img.src;
+            lightboxCaption.innerText = title;
+            lightbox.classList.remove('opacity-0', 'pointer-events-none');
+            lightbox.classList.add('opacity-100', 'pointer-events-auto');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('opacity-100', 'pointer-events-auto');
+            lightbox.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            openLightbox(currentIndex);
+        }
+
+        function showNext() {
+            currentIndex = (currentIndex + 1) % visibleItems.length;
+            openLightbox(currentIndex);
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', showPrev);
+        nextBtn.addEventListener('click', showNext);
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('opacity-100')) return;
+            
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
+        });
+    </script>
+</body>
+</html>
